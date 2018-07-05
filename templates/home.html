@@ -1,0 +1,6 @@
+    {%extends 'layout.html'%}    
+    {%block content%}
+        {%for content in database%}
+            <h1>{{database[content]}}</h1>
+        {%endfor%}
+    {%endblock content%}

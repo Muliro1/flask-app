@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = 'stylesheet' type = 'text/css' src = 'main.css'>
+	    {%if title%}
+             <title class = 'site-text'>
+    	         Flask - {{title}}
+             </title>
+        {%else%}
+             <title class = 'site-text'>
+		         Home page
+		     </title>
+        {%endif%} 
+         <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+    <body>
+        <header >
+  <nav>
+    <div>
+      <a href="/home" class = 'site-text'>Flask Blog</a>
+      <button>
+        <span ></span>
+      </button>
+      <div>
+        <div class = 'site-text'>
+          <a href="{{ url_for('home')}}">Home</a>
+          <a href="{{ url_for('info')}}">About</a>
+          <a href="{{ url_for('register')}}">Register</a>
+          <a href="{{ url_for('logout')}}">Logout</a>
+          <a href="{{ url_for('new_post')}}">create_post</a>
+          <a href="{{ url_for('account')}}">Account</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main>
+  <div>
+    <div>
+        {%with messages = get_flashed_messages()%}
+            {%if messages %}
+                {%for message in messages%}
+                    <div class = 'notify'>
+                        {{message}}
+                    </div>
+                {%endfor%}
+            {%endif%}
+        {%endwith%}
+        {%block content%}
+        {%endblock%}
+        <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </body>
+</html>
